@@ -1,0 +1,41 @@
+<br><br><br>
+<h1 aria-hidden="true"> Cart </h1>
+<div class="container table-responsive py-5">
+
+    <table class="table table-striped" aria-labelledby="tablelabel">
+        <thead class="thead-dark">
+            <th scope="col">Cart Id</th>
+            <th scope="col">Product Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Image</th>
+            <th scope="col">Product Quantity</th>
+            <th scope="col">Product Price</th>
+            <th scope="col"> Total Price</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ct of Cart">
+                <td>{{ct.cartId}}</td>
+                <td>{{ct.productId}}</td>
+                <td>{{ct.productName}}</td>
+                <td> <img [src]="ct.productImage" width="50" height="50"> </td>
+                <td>
+                    <mat-icon (click)="decrementQuantity(ct.cartId)">remove_circle</mat-icon>
+                    <span>  {{ ct.quantity }}  </span>
+                    <mat-icon (click)="incrementQuantity(ct.cartId)">add_circle</mat-icon>
+                </td>
+                <td>{{ct.price| currency :'INR'}}</td>
+                <td>{{ct.price*ct.quantity| currency :'INR'}}</td>
+                <button (click)="DeleteCart(ct.cartId)"><mat-icon>delete_sweep</mat-icon></button>
+
+            </tr>
+            <tr>
+                <td colspan="5"></td>
+                <td> Total Amount : </td>
+                <td>{{grandTotal() | currency :'INR'}}</td>
+            </tr>
+            <button class="btn-success" style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" style="background-color:orangered;"routerLink="/order" >Order</button>
+            <button class="btn-success" style="margin: 50px; padding: 10px" type="button" class="btn btn-primary" style="background-color:orangered; margin-left: 10px;"routerLink="/products" >Home</button>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,42 @@
+<section class="vh-100">
+    <br><br><br>
+    <h1><b>Please share your Feedback Here</b></h1>
+    <div class="container-fluid h-custom">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+                <img src="https://ik.imagekit.io/qp0vq2xws/feedback_K7TGbEa3e.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1665384770603" class="img-fluid" alt="Sample image" style="width: 450px;height: 400px;">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                <form [formGroup]="Feedbackform" (ngSubmit)="onSubmit()">
+
+
+
+                    <!-- User Name input -->
+                    <div>
+                        <div *ngIf="username?.touched && username?.invalid">
+                            <span>Username is required.</span></div>
+                        <input formControlName="Username" type="text" id="Username" class="form-control form-control-lg" placeholder="User Name" />
+                        <label class="form-label" for="form3Example3"></label>
+
+                    </div>
+                    <!-- User Feedback input -->
+                    <div class="form-group">
+                        <div *ngIf="feedback?.touched && feedback?.invalid">
+                            <span>Feedback is required.</span></div>
+                        <input formControlName="Feedback" type="text" id="Feedback" class="form-control form-control-lg" placeholder="Feedback" />
+                        <label class="form-label" for="form3Example3"></label>
+
+
+                    </div>
+
+                    <div class="text-center text-lg-start mt-4 pt-2">
+                        <button type="submit" class="btn btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Save</button>
+                        <div class="space"></div>
+                        <button class="btn btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" routerLink="/allfeedbacks">Our Feedbacks</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

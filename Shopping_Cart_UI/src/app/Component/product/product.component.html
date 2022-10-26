@@ -1,0 +1,31 @@
+<div class=" mb-3">
+    <h1><b>Products</b></h1>
+    <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="searchTerm" (keyup)="search($event)" placeholder="search products">
+        <span class="fas fa-search search-icon"></span>
+    </div>
+
+    <div class="row mb-3">
+        <ng-container *ngFor="let products of products | filter:searchKey:'productName' | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+            <div class="col">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{products.productImage}} " style="width: 18rem;height:15rem;" alt="Card image cap">
+                    <div class="card-body">
+                        <h3 class="card-title"><b>{{products.productName|uppercase}}</b></h3>
+                        <p class="card-text">{{products.price|currency:'INR':'symbol-narrow'}}</p>
+                        <p class="card-text">{{products.description}}</p>
+
+                        <a (click)="addToCart(products)" class="btn">Add to cart</a>
+
+                    </div>
+                </div>
+            </div>
+            
+        </ng-container>
+    </div>
+
+    <div class="mt-8 py-5 flex justify-center items-center">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+
+</div>
